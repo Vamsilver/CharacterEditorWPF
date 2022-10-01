@@ -21,7 +21,6 @@ namespace CharacterEditorCore
         protected int dexterity;
         protected int constitution;
         protected int intelligence;
-        protected int availablePoints;
 
         public double manaPoints;
         public double healthPoints;
@@ -34,9 +33,37 @@ namespace CharacterEditorCore
         public virtual int Constitution { get; set; }
         public virtual int Intelligence { get; set; }
 
+        public Level level = new Level();
+        protected int availablePoint;
+
+        public int AvailablePoint
+        {
+            get { return availablePoint; }
+            set 
+            {
+                if(value < 0)
+                {
+                    return;
+                }
+                availablePoint = value; 
+            }
+        }
+
+
         public override string ToString()
         {
             return $"{Name} | {_id}";
+        }
+
+        private void LevelUp()
+        {
+            availablePoint += 5;
+        }
+
+        public Character()
+        {
+            level.LevelUpEvent += LevelUp;
+            availablePoint = 10;
         }
     }
 }

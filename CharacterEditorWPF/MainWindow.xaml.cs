@@ -107,6 +107,10 @@ namespace CharacterEditorWPF
             tb_magicAttack.Text = newCharacter.magicAttack.ToString();
             tb_physicalDef.Text = newCharacter.physicalDefense.ToString();
 
+            tb_eperience.Text = newCharacter.level.CurrentExperience.ToString();
+            tb_level.Text = newCharacter.level.CurrentLevel.ToString();
+            tb_availablePoints.Text = newCharacter.AvailablePoint.ToString();
+
             GetInventoryToListBox();
         }
 
@@ -133,6 +137,10 @@ namespace CharacterEditorWPF
             tb_magicAttack.Text = "0";
             tb_physicalDef.Text = "0";
 
+            tb_level.Text = "0";
+            tb_eperience.Text = "0";
+            tb_availablePoints.Text = "0";
+
             currentCharacter = null;
             isClearingData = false;
         }
@@ -143,7 +151,12 @@ namespace CharacterEditorWPF
             {
                 return;
             }
+            if(currentCharacter.AvailablePoint == 0)
+            {
+                return;
+            }
             currentCharacter.Strength++;
+            currentCharacter.AvailablePoint--;
             FillData(currentCharacter);
         }
 
@@ -153,7 +166,12 @@ namespace CharacterEditorWPF
             {
                 return;
             }
+            if (currentCharacter.AvailablePoint == 0)
+            {
+                return;
+            }
             currentCharacter.Dexterity++;
+            currentCharacter.AvailablePoint--;
             FillData(currentCharacter);
         }
 
@@ -163,7 +181,12 @@ namespace CharacterEditorWPF
             {
                 return;
             }
+            if (currentCharacter.AvailablePoint == 0)
+            {
+                return;
+            }
             currentCharacter.Constitution++;
+            currentCharacter.AvailablePoint--;
             FillData(currentCharacter);
         }
 
@@ -173,7 +196,12 @@ namespace CharacterEditorWPF
             {
                 return;
             }
+            if (currentCharacter.AvailablePoint == 0)
+            {
+                return;
+            }
             currentCharacter.Intelligence++;
+            currentCharacter.AvailablePoint--;
             FillData(currentCharacter);
         }
         private bool CheckCharactOnExistment()
@@ -196,7 +224,12 @@ namespace CharacterEditorWPF
             {
                 return;
             }
+            var oldValue = currentCharacter.Strength;
             currentCharacter.Strength--;
+            if (oldValue != currentCharacter.Strength)
+            {
+                currentCharacter.AvailablePoint++;
+            }
             FillData(currentCharacter);
         }
 
@@ -206,7 +239,12 @@ namespace CharacterEditorWPF
             {
                 return;
             }
+            var oldValue = currentCharacter.Dexterity;
             currentCharacter.Dexterity--;
+            if (oldValue != currentCharacter.Dexterity)
+            {
+                currentCharacter.AvailablePoint++;
+            }
             FillData(currentCharacter);
         }
 
@@ -216,7 +254,12 @@ namespace CharacterEditorWPF
             {
                 return;
             }
+            var oldValue = currentCharacter.Constitution;
             currentCharacter.Constitution--;
+            if (oldValue != currentCharacter.Constitution)
+            {
+                currentCharacter.AvailablePoint++;
+            }
             FillData(currentCharacter);
         }
 
@@ -226,7 +269,12 @@ namespace CharacterEditorWPF
             {
                 return;
             }
+            var oldValue = currentCharacter.Intelligence;
             currentCharacter.Intelligence--;
+            if (oldValue != currentCharacter.Intelligence)
+            {
+                currentCharacter.AvailablePoint++;
+            }
             FillData(currentCharacter);
         }
 
@@ -416,6 +464,24 @@ namespace CharacterEditorWPF
             {
                 lb_inventory.Items.Add(item.Name);
             }
+        }
+
+        private void Add100Exp_Click(object sender, RoutedEventArgs e)
+        {
+            currentCharacter.level.CurrentExperience += 100;
+            FillData(currentCharacter);
+        }
+
+        private void Add500Exp_Click(object sender, RoutedEventArgs e)
+        {
+            currentCharacter.level.CurrentExperience += 500;
+            FillData(currentCharacter);
+        }
+
+        private void Add1000Exp_Click(object sender, RoutedEventArgs e)
+        {
+            currentCharacter.level.CurrentExperience += 1000;
+            FillData(currentCharacter);
         }
     }
 }
