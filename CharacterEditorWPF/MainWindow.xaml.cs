@@ -18,6 +18,7 @@ using System.Windows.Shapes;
 using CharacterEditorCore.Item;
 using CharacterEditorCore.MongoDb;
 using MongoDB.Driver;
+using CharacterEditorCore.Abilities;
 
 namespace CharacterEditorWPF
 {
@@ -29,7 +30,6 @@ namespace CharacterEditorWPF
         public Character currentCharacter;
         public bool isCharacterSelected;
         public bool isClearingData;
-        public bool isChangingType;
 
         public MainWindow()
         {
@@ -54,18 +54,19 @@ namespace CharacterEditorWPF
 
         private void cb_chooseCharact_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            isChangingType = true;
+            if (isCharacterSelected)
+            {
+                return;
+            }
+
+
             FillListBox();
 
             if (cb_chooseCharact.SelectedIndex == -1)
             {
                 return;
             }
-            if (isCharacterSelected)
-            {
-                return;
-            }
-            isChangingType = false;
+
 
             ComboBoxItem typeItem = (ComboBoxItem)cb_chooseCharact.SelectedItem;
             string? value = typeItem.Content.ToString();
@@ -110,8 +111,11 @@ namespace CharacterEditorWPF
             tb_eperience.Text = newCharacter.level.CurrentExperience.ToString();
             tb_level.Text = newCharacter.level.CurrentLevel.ToString();
             tb_availablePoints.Text = newCharacter.AvailablePoint.ToString();
+            tb_abilityPoints.Text = newCharacter.abilitiesPoints.ToString();
 
             GetInventoryToListBox();
+            GetPotentialAbilities();
+            GetCharactersAbilities();
         }
 
         private void ClearData()
@@ -140,9 +144,30 @@ namespace CharacterEditorWPF
             tb_level.Text = "0";
             tb_eperience.Text = "0";
             tb_availablePoints.Text = "0";
+            tb_abilityPoints.Text = "0";
 
             currentCharacter = null;
             isClearingData = false;
+        }
+
+        private void GetPotentialAbilities()
+        {
+            cb_PotentialAbilities.Items.Clear();
+
+            foreach(var ability in currentCharacter.potentialAbilities)
+            {
+                cb_PotentialAbilities.Items.Add(ability);   
+            }
+        }
+
+        private void GetCharactersAbilities()
+        {
+            cb_CharactersAbilities.Items.Clear();
+
+            foreach (var ability in currentCharacter.abilities)
+            {
+                cb_CharactersAbilities.Items.Add(ability);
+            }
         }
 
         private void btn_increaseStrength_Click(object sender, RoutedEventArgs e)
@@ -155,8 +180,12 @@ namespace CharacterEditorWPF
             {
                 return;
             }
+            var oldValue = currentCharacter.Strength;
             currentCharacter.Strength++;
-            currentCharacter.AvailablePoint--;
+            if (oldValue != currentCharacter.Strength)
+            {
+                currentCharacter.AvailablePoint--;
+            }
             FillData(currentCharacter);
         }
 
@@ -170,8 +199,12 @@ namespace CharacterEditorWPF
             {
                 return;
             }
+            var oldValue = currentCharacter.Dexterity;
             currentCharacter.Dexterity++;
-            currentCharacter.AvailablePoint--;
+            if (oldValue != currentCharacter.Dexterity)
+            {
+                currentCharacter.AvailablePoint--;
+            }
             FillData(currentCharacter);
         }
 
@@ -185,8 +218,12 @@ namespace CharacterEditorWPF
             {
                 return;
             }
+            var oldValue = currentCharacter.Constitution;
             currentCharacter.Constitution++;
-            currentCharacter.AvailablePoint--;
+            if (oldValue != currentCharacter.Constitution)
+            {
+                currentCharacter.AvailablePoint--;
+            }
             FillData(currentCharacter);
         }
 
@@ -200,8 +237,12 @@ namespace CharacterEditorWPF
             {
                 return;
             }
+            var oldValue = currentCharacter.Intelligence;
             currentCharacter.Intelligence++;
-            currentCharacter.AvailablePoint--;
+            if (oldValue != currentCharacter.Intelligence)
+            {
+                currentCharacter.AvailablePoint--;
+            }
             FillData(currentCharacter);
         }
         private bool CheckCharactOnExistment()
@@ -280,6 +321,7 @@ namespace CharacterEditorWPF
 
         private void button_addCharacter_Click(object sender, RoutedEventArgs e)
         {
+            cb_createdCharacters.Items.Clear();
             try
             {
                 currentCharacter.Name = tb_name.Text;
@@ -321,18 +363,10 @@ namespace CharacterEditorWPF
                 cb_createdCharacters.Items.Clear();
             }
 
-            if (cb_chooseCharact.SelectedItem is null)
-            {
-                return;
-            }
-
-            ComboBoxItem typeItem = (ComboBoxItem)cb_chooseCharact.SelectedItem;
-            string? type = typeItem.Content.ToString();
-
             var collection = MongoDb.GetCollection();
             try
             {
-                var filter = new BsonDocument("_t", type);
+                var filter = new BsonDocument();
                 using var cursor = await collection.FindAsync(filter); 
                 {
                     while (await cursor.MoveNextAsync())
@@ -340,7 +374,7 @@ namespace CharacterEditorWPF
                         var docs = cursor.Current;
                         foreach (var doc in docs)
                         {
-                            cb_createdCharacters.Items.Add(doc.Name);
+                            cb_createdCharacters.Items.Add(doc);
                         }
                     }
                 }     
@@ -359,6 +393,7 @@ namespace CharacterEditorWPF
 
         private void form_mainForm_Loaded(object sender, RoutedEventArgs e)
         {
+            FillListBox();  
         }
 
         private void cb_createdCharacters_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -367,37 +402,25 @@ namespace CharacterEditorWPF
             {
                 return;
             }
-            if (isChangingType)
-            {
-                return;
-            }
 
             try
             {
-                var unit = MongoDb.FindById(cb_createdCharacters.SelectedItem.ToString().
-                    Split('|')[1].Trim());
+                Character unit = (Character)cb_createdCharacters.SelectedItem;
 
                 currentCharacter = unit;
 
                 FillData(currentCharacter);
                 isCharacterSelected = true;
+                cb_chooseCharact.Text = currentCharacter.typeOfCharacter;
                 tb_name.Text = currentCharacter.Name;
                 isCharacterSelected = false;
             }
             catch { };
         }
 
-        private void SetTypeForSelectedCharacter()
-        {
-            cb_chooseCharact.Text = currentCharacter.typeOfCharacter;
-        }
-
         private void btn_clear_Click(object sender, RoutedEventArgs e)
         {
             ClearData();
-        }
-        private void SetDataForSelectedCharacter(Character unit)
-        {
         }
 
         private void btn_AddItem_Click(object sender, RoutedEventArgs e)
@@ -482,6 +505,35 @@ namespace CharacterEditorWPF
         {
             currentCharacter.level.CurrentExperience += 1000;
             FillData(currentCharacter);
+        }
+
+        private void btn_AddSkills_Click(object sender, RoutedEventArgs e)
+        {
+            try 
+            {
+                if(currentCharacter is null)
+                {
+                    return;
+                }
+                if(currentCharacter.abilitiesPoints == 0)
+                {
+                    return;
+                }
+
+                Ability ability = (Ability)cb_PotentialAbilities.SelectedItem;
+                
+                if(ability is null)
+                {
+                    return;
+                }
+
+                currentCharacter.abilities.Add(ability);
+                currentCharacter.potentialAbilities.Remove(ability);
+                currentCharacter.abilitiesPoints--;
+
+                FillData(currentCharacter);
+            }
+            catch { }
         }
     }
 }

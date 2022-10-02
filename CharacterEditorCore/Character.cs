@@ -3,6 +3,7 @@ using System;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
 using CharacterEditorCore.Item;
+using CharacterEditorCore.Abilities;
 
 namespace CharacterEditorCore
 {
@@ -15,7 +16,9 @@ namespace CharacterEditorCore
         public string typeOfCharacter;
 
         [BsonIgnoreIfDefault]
-        public List<IItem> inventory = new List<IItem>(3);
+        public List<IItem> inventory;
+
+        private readonly int inventoryCapacity = 3;
 
         protected int strength;
         protected int dexterity;
@@ -35,6 +38,10 @@ namespace CharacterEditorCore
 
         public Level level = new Level();
         protected int availablePoint;
+
+        public List<Ability> abilities = new List<Ability>();
+        public List<Ability> potentialAbilities;
+        public int abilitiesPoints;
 
         public int AvailablePoint
         {
@@ -60,10 +67,28 @@ namespace CharacterEditorCore
             availablePoint += 5;
         }
 
+        private void AbilityPointUp()
+        {
+            if(this.level.CurrentLevel % 3 == 0)
+            {
+                abilitiesPoints++;
+            }
+        }
+
+        //public void SubscribeForEvent()
+        //{
+        //    level.LevelUpEvent += LevelUp;
+        //    level.LevelUpEvent += AbilityPointUp;
+        //}
+
         public Character()
         {
             level.LevelUpEvent += LevelUp;
+            level.LevelUpEvent += AbilityPointUp;
             availablePoint = 10;
+            abilitiesPoints = 0;
+
+            inventory = new List<IItem>(inventoryCapacity);
         }
     }
 }

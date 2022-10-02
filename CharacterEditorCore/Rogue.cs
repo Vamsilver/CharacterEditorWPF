@@ -1,6 +1,8 @@
-﻿using System;
+﻿using CharacterEditorCore.Abilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,6 +17,11 @@ namespace CharacterEditorCore
             Constitution = (int)Enums.RogueStats.minConstitution;
             Intelligence = (int)Enums.RogueStats.minIntelligence;
             typeOfCharacter = "Rogue";
+
+            potentialAbilities = new List<Ability>
+            {
+                new ColdBlood(), new GhostlyStrike(), new Unvisibility()
+            };
         }
 
         public Rogue(int strength, int dexterity, int constitution, int intelligence, string name)
@@ -89,5 +96,7 @@ namespace CharacterEditorCore
                 }
             }
         }
+
+        
     }
 }

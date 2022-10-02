@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CharacterEditorCore.Abilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,11 @@ namespace CharacterEditorCore
             Constitution = (int)Enums.WizardStats.minConstitution;
             Intelligence = (int)Enums.WizardStats.minIntelligence;
             typeOfCharacter = "Wizard";
+
+            potentialAbilities = new List<Ability>
+            {
+                new ConeOfCold(), new Blizzard(), new FireBreath()
+            };
         }
 
         public Wizard(int strength, int dexterity, int constitution, int intelligence, string name)

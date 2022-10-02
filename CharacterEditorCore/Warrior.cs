@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CharacterEditorCore.Abilities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +16,11 @@ namespace CharacterEditorCore
             Constitution = (int)Enums.WarriorStats.minConstitution;
             Intelligence = (int)Enums.WarriorStats.minIntelligence;
             typeOfCharacter = "Warrior";
+
+            potentialAbilities = new List<Ability>
+            {
+                new Cleave(), new Rage(), new IronFists(), new IronShield()
+            };
         }
 
         public Warrior(int strength, int dexterity, int constitution, int intelligence, string name)

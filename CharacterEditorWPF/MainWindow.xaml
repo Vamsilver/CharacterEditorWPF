@@ -13,33 +13,33 @@
             <ComboBoxItem Content="Wizard"/>
         </ComboBox>
         <Label x:Name="label_chooseCharacter" Content="Choose class of figther" HorizontalAlignment="Left" Margin="12,24,0,0" VerticalAlignment="Top" FontSize="16"/>
-        <Label x:Name="label_strength" Content="Strength" VerticalAlignment="Top" Margin="85,139,0,0" HorizontalAlignment="Left" Height="30" Width="72" FontSize="16"/>
-        <TextBlock x:Name="tb_strength" TextWrapping="Wrap" Text="0" Width="90" TextAlignment="Center" VerticalAlignment="Top" Margin="75,174,0,0" HorizontalAlignment="Left" Height="18" FontSize="16"/>
-        <Button x:Name="btn_increaseStrength" Content="+" Width="42" Click="btn_increaseStrength_Click" VerticalAlignment="Top" Margin="175,169,0,0" HorizontalAlignment="Left" Height="23" FontSize="16"/>
-        <Button x:Name="btn_decreaseStrength" Content="-" Width="42" Click="btn_decreaseStrength_Click" VerticalAlignment="Top" Margin="23,169,0,0" HorizontalAlignment="Left" Height="23" FontSize="16"/>
-        <Label x:Name="label_dexterity" Content="Dexterity" VerticalAlignment="Top" Margin="83,207,0,0" HorizontalAlignment="Left" Height="30" Width="76" FontSize="16"/>
-        <TextBlock x:Name="tb_dexterity" TextWrapping="Wrap" Text="0" Width="90" TextAlignment="Center" VerticalAlignment="Top" Margin="75,243,0,0" HorizontalAlignment="Left" Height="18" FontSize="16"/>
-        <Button x:Name="btn_increaseDexterity" Content="+" HorizontalAlignment="Left" Margin="175,238,0,0" VerticalAlignment="Top" Width="42" Click="btn_increaseDexterity_Click" Height="23" FontSize="16"/>
-        <Button x:Name="btn_decreaseDexterity" Content="-" HorizontalAlignment="Left" Margin="23,238,0,0" VerticalAlignment="Top" Width="42" Click="btn_decreaseDexterity_Click" Height="23" FontSize="16"/>
-        <Label x:Name="label_constitution" Content="Constitution" HorizontalAlignment="Left" Margin="73,277,0,0" VerticalAlignment="Top" Height="30" Width="96" FontSize="16"/>
-        <TextBlock x:Name="tb_constitution" HorizontalAlignment="Left" Margin="75,312,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="90" TextAlignment="Center" Height="18" FontSize="16"/>
-        <Button x:Name="btn_increaseConstitution" Content="+" HorizontalAlignment="Left" Margin="175,307,0,0" VerticalAlignment="Top" Width="42" Click="btn_increaseConstitution_Click" Height="23" FontSize="16"/>
-        <Button x:Name="btn_decreaseConstitution" Content="-" HorizontalAlignment="Left" Margin="23,307,0,0" VerticalAlignment="Top" Width="42" Click="btn_decreaseConstitution_Click" Height="23" FontSize="16"/>
-        <Label x:Name="label_intelligence" Content="Intelligence" HorizontalAlignment="Left" Margin="75,343,0,0" VerticalAlignment="Top" Height="30" Width="90" FontSize="16"/>
-        <TextBlock x:Name="tb_intelligence" HorizontalAlignment="Left" Margin="75,381,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="90" TextAlignment="Center" Height="18" FontSize="16"/>
-        <Button x:Name="btn_increaseIntelligence" Content="+" HorizontalAlignment="Left" Margin="175,376,0,0" VerticalAlignment="Top" Width="42" Click="btn_increaseIntelligence_Click" Height="23" FontSize="16"/>
-        <Button x:Name="btn_decreaseIntelligence" Content="-" HorizontalAlignment="Left" Margin="23,376,0,0" VerticalAlignment="Top" Width="42" Click="btn_decreaseIntelligence_Click" Height="23" FontSize="16"/>
-        <Label x:Name="label_HP" Content="HP:" HorizontalAlignment="Left" Margin="295,155,0,0" VerticalAlignment="Top" Height="56" Width="77" FontSize="16"/>
-        <TextBlock x:Name="tb_HP" HorizontalAlignment="Left" Margin="443,162,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Height="34" Width="92" FontSize="16"/>
-        <Label x:Name="label_MP" Content="MP:" HorizontalAlignment="Left" Margin="295,207,0,0" VerticalAlignment="Top" Height="37" Width="83" FontSize="16"/>
-        <TextBlock x:Name="tb_MP" HorizontalAlignment="Left" Margin="443,213,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Height="35" Width="92" FontSize="16"/>
-        <Label x:Name="label_attack" Content="Attack:" HorizontalAlignment="Left" Margin="295,258,0,0" VerticalAlignment="Top" Height="56" Width="128" FontSize="16"/>
-        <TextBlock x:Name="tb_attack" HorizontalAlignment="Left" Margin="443,264,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Height="34" Width="92" FontSize="16" RenderTransformOrigin="0.478,-0.458"/>
-        <Label x:Name="label_magicAttack" Content="Magic attack:" HorizontalAlignment="Left" Margin="295,309,0,0" VerticalAlignment="Top" Height="57" Width="222" FontSize="16"/>
-        <TextBlock x:Name="tb_magicAttack" HorizontalAlignment="Left" Margin="443,315,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Height="34" Width="92" FontSize="16"/>
-        <Label x:Name="label_physicalDef" Content="Physical deffence :" HorizontalAlignment="Left" Margin="295,363,0,0" VerticalAlignment="Top" Height="56" Width="162" FontSize="16"/>
-        <TextBlock x:Name="tb_physicalDef" HorizontalAlignment="Left" Margin="443,367,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Height="34" Width="92" FontSize="16"/>
-        <Button x:Name="button_addCharacter" Content="Add" HorizontalAlignment="Left" Margin="72,426,0,0" VerticalAlignment="Top" Height="48" Width="96" Click="button_addCharacter_Click" RenderTransformOrigin="0.5,0.5" FontSize="16">
+        <Label x:Name="label_strength" Content="Strength" VerticalAlignment="Top" Margin="85,139,0,0" HorizontalAlignment="Left" Height="37" Width="72" FontSize="16"/>
+        <TextBlock x:Name="tb_strength" TextWrapping="Wrap" Text="0" Width="90" TextAlignment="Center" VerticalAlignment="Top" Margin="75,183,0,0" HorizontalAlignment="Left" Height="22" FontSize="16"/>
+        <Button x:Name="btn_increaseStrength" Content="+" Width="42" Click="btn_increaseStrength_Click" VerticalAlignment="Top" Margin="175,176,0,0" HorizontalAlignment="Left" Height="29" FontSize="16"/>
+        <Button x:Name="btn_decreaseStrength" Content="-" Width="42" Click="btn_decreaseStrength_Click" VerticalAlignment="Top" Margin="23,176,0,0" HorizontalAlignment="Left" Height="29" FontSize="16"/>
+        <Label x:Name="label_dexterity" Content="Dexterity" VerticalAlignment="Top" Margin="83,224,0,0" HorizontalAlignment="Left" Height="37" Width="76" FontSize="16"/>
+        <TextBlock x:Name="tb_dexterity" TextWrapping="Wrap" Text="0" Width="90" TextAlignment="Center" VerticalAlignment="Top" Margin="75,268,0,0" HorizontalAlignment="Left" Height="23" FontSize="16"/>
+        <Button x:Name="btn_increaseDexterity" Content="+" HorizontalAlignment="Left" Margin="175,262,0,0" VerticalAlignment="Top" Width="42" Click="btn_increaseDexterity_Click" Height="29" FontSize="16"/>
+        <Button x:Name="btn_decreaseDexterity" Content="-" HorizontalAlignment="Left" Margin="23,262,0,0" VerticalAlignment="Top" Width="42" Click="btn_decreaseDexterity_Click" Height="29" FontSize="16"/>
+        <Label x:Name="label_constitution" Content="Constitution" HorizontalAlignment="Left" Margin="73,311,0,0" VerticalAlignment="Top" Height="37" Width="96" FontSize="16"/>
+        <TextBlock x:Name="tb_constitution" HorizontalAlignment="Left" Margin="75,354,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="90" TextAlignment="Center" Height="23" FontSize="16"/>
+        <Button x:Name="btn_increaseConstitution" Content="+" HorizontalAlignment="Left" Margin="175,348,0,0" VerticalAlignment="Top" Width="42" Click="btn_increaseConstitution_Click" Height="29" FontSize="16"/>
+        <Button x:Name="btn_decreaseConstitution" Content="-" HorizontalAlignment="Left" Margin="23,348,0,0" VerticalAlignment="Top" Width="42" Click="btn_decreaseConstitution_Click" Height="29" FontSize="16"/>
+        <Label x:Name="label_intelligence" Content="Intelligence" HorizontalAlignment="Left" Margin="75,393,0,0" VerticalAlignment="Top" Height="37" Width="90" FontSize="16"/>
+        <TextBlock x:Name="tb_intelligence" HorizontalAlignment="Left" Margin="75,440,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="90" TextAlignment="Center" Height="23" FontSize="16"/>
+        <Button x:Name="btn_increaseIntelligence" Content="+" HorizontalAlignment="Left" Margin="175,434,0,0" VerticalAlignment="Top" Width="42" Click="btn_increaseIntelligence_Click" Height="29" FontSize="16"/>
+        <Button x:Name="btn_decreaseIntelligence" Content="-" HorizontalAlignment="Left" Margin="23,434,0,0" VerticalAlignment="Top" Width="42" Click="btn_decreaseIntelligence_Click" Height="29" FontSize="16"/>
+        <Label x:Name="label_HP" Content="HP:" HorizontalAlignment="Left" Margin="295,159,0,0" VerticalAlignment="Top" Height="70" Width="77" FontSize="16"/>
+        <TextBlock x:Name="tb_HP" HorizontalAlignment="Left" Margin="443,168,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Height="42" Width="92" FontSize="16"/>
+        <Label x:Name="label_MP" Content="MP:" HorizontalAlignment="Left" Margin="295,224,0,0" VerticalAlignment="Top" Height="46" Width="83" FontSize="16"/>
+        <TextBlock x:Name="tb_MP" HorizontalAlignment="Left" Margin="443,231,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Height="44" Width="92" FontSize="16"/>
+        <Label x:Name="label_attack" Content="Attack:" HorizontalAlignment="Left" Margin="295,287,0,0" VerticalAlignment="Top" Height="70" Width="128" FontSize="16"/>
+        <TextBlock x:Name="tb_attack" HorizontalAlignment="Left" Margin="443,295,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Height="42" Width="92" FontSize="16" RenderTransformOrigin="0.478,-0.458"/>
+        <Label x:Name="label_magicAttack" Content="Magic attack:" HorizontalAlignment="Left" Margin="295,351,0,0" VerticalAlignment="Top" Height="71" Width="128" FontSize="16"/>
+        <TextBlock x:Name="tb_magicAttack" HorizontalAlignment="Left" Margin="443,358,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Height="42" Width="92" FontSize="16"/>
+        <Label x:Name="label_physicalDef" Content="Physical deffence :" HorizontalAlignment="Left" Margin="295,418,0,0" VerticalAlignment="Top" Height="70" Width="143" FontSize="16"/>
+        <TextBlock x:Name="tb_physicalDef" HorizontalAlignment="Left" Margin="443,423,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Height="42" Width="92" FontSize="16"/>
+        <Button x:Name="button_addCharacter" Content="Add" HorizontalAlignment="Left" Margin="72,492,0,0" VerticalAlignment="Top" Height="48" Width="96" Click="button_addCharacter_Click" RenderTransformOrigin="0.5,0.5" FontSize="16">
             <Button.RenderTransform>
                 <TransformGroup>
                     <ScaleTransform/>
@@ -53,8 +53,8 @@
         <TextBox x:Name="tb_name" HorizontalAlignment="Left" Margin="79,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="234" LostFocus="tb_name_LostFocus" Height="30" FontFamily="Algerian" FontSize="16"/>
         <ComboBox x:Name="cb_createdCharacters" HorizontalAlignment="Left" Margin="538,22,0,0" VerticalAlignment="Top" Width="166" SelectionChanged="cb_createdCharacters_SelectionChanged" Height="28" FontSize="16"/>
         <Label x:Name="label_createdCharacters" Content="Created characters" HorizontalAlignment="Left" Margin="368,22,0,0" VerticalAlignment="Top" Height="33" Width="150" FontSize="16"/>
-        <Button x:Name="btn_clear" Content="Clear all fields" HorizontalAlignment="Left" Margin="382,426,0,0" VerticalAlignment="Top" Height="48" Width="96" Click="btn_clear_Click" FontSize="16"/>
-        <ListBox x:Name="lb_inventory" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="683,538,24,303" FontSize="16" Visibility="Hidden"/>
+        <Button x:Name="btn_clear" Content="Clear all fields" HorizontalAlignment="Left" Margin="393,492,0,0" VerticalAlignment="Top" Height="48" Width="96" Click="btn_clear_Click" FontSize="16"/>
+        <ListBox x:Name="lb_inventory" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="606,398,102,443" FontSize="16" Visibility="Visible"/>
         <ComboBox x:Name="cb_ChooseItem" HorizontalAlignment="Left" Margin="538,88,0,0" VerticalAlignment="Top" Width="166" Height="28" FontSize="16">
             <ComboBoxItem Content="Axe"/>
             <ComboBoxItem Content="Wand"/>
@@ -73,6 +73,13 @@
         <Label Content="Level:" HorizontalAlignment="Left" Margin="575,149,0,0" VerticalAlignment="Top" FontSize="16" Width="94" RenderTransformOrigin="0.417,0.257"/>
         <Label Content="Experience:" HorizontalAlignment="Left" Margin="575,185,0,0" VerticalAlignment="Top" FontSize="16" Width="94" RenderTransformOrigin="0.417,0.257"/>
         <Label Content="Available points:" HorizontalAlignment="Left" Margin="800,140,0,0" VerticalAlignment="Top" FontSize="16" Width="126" RenderTransformOrigin="0.417,0.257"/>
-        <TextBlock x:Name="tb_availablePoints" HorizontalAlignment="Left" FontSize="16" Margin="832,176,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="30" Width="113"/>
+        <TextBlock x:Name="tb_availablePoints" HorizontalAlignment="Left" FontSize="16" TextAlignment="Center" Margin="806,178,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="30" Width="114"/>
+        <Label Content="Skill points:" HorizontalAlignment="Left" Margin="800,218,0,0" VerticalAlignment="Top" FontSize="16" Width="126" RenderTransformOrigin="0.417,0.257"/>
+        <TextBlock x:Name="tb_abilityPoints" HorizontalAlignment="Left" FontSize="16" TextAlignment="Center" Margin="806,255,0,0" TextWrapping="Wrap"  VerticalAlignment="Top" Height="31" Width="114"/>
+        <ComboBox x:Name="cb_PotentialAbilities" HorizontalAlignment="Left" Margin="538,348,0,0" VerticalAlignment="Top" Width="166" Height="28" FontSize="16"/>
+        <Label Content="Skills to learn:" HorizontalAlignment="Left" Margin="587,311,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <Button x:Name="btn_AddSkills" Content="Add" HorizontalAlignment="Left" Margin="714,350,0,0" VerticalAlignment="Top" Height="25" Width="76" FontSize="16" Click="btn_AddSkills_Click"/>
+        <ComboBox x:Name="cb_CharactersAbilities" HorizontalAlignment="Left" Margin="810,348,0,0" VerticalAlignment="Top" Width="166" Height="28" FontSize="16"/>
+        <Label Content="Characters skills:" HorizontalAlignment="Left" Margin="830,311,0,0" VerticalAlignment="Top" FontSize="16"/>
     </Grid>
 </Window>
