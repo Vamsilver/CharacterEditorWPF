@@ -112,6 +112,8 @@ namespace CharacterEditorWPF
             tb_availablePoints.Text = newCharacter.AvailablePoint.ToString();
             tb_abilityPoints.Text = newCharacter.abilitiesPoints.ToString();
 
+            tb_name.Text = newCharacter.Name;
+
             GetInventoryToListBox();
             GetPotentialAbilities();
             GetCharactersAbilities();
