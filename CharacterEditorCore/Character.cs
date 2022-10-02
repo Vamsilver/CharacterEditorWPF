@@ -18,7 +18,7 @@ namespace CharacterEditorCore
         [BsonIgnoreIfDefault]
         public List<IItem> inventory;
 
-        private readonly int inventoryCapacity = 3;
+        private readonly int _inventoryCapacity = 3;
 
         protected int strength;
         protected int dexterity;
@@ -88,7 +88,12 @@ namespace CharacterEditorCore
             availablePoint = 10;
             abilitiesPoints = 0;
 
-            inventory = new List<IItem>(inventoryCapacity);
+            inventory = new List<IItem>(_inventoryCapacity);
+        }
+
+        public int GetInventoryMaxCapacity()
+        {
+            return _inventoryCapacity; 
         }
     }
 }

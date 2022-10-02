@@ -433,7 +433,7 @@ namespace CharacterEditorWPF
                 return;
             }
 
-            if (currentCharacter.inventory.Count == currentCharacter.inventory.Capacity)
+            if (currentCharacter.inventory.Count == currentCharacter.GetInventoryMaxCapacity())
             {
                 return;
             }
