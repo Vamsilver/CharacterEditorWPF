@@ -8,7 +8,8 @@ using System.Threading.Tasks;
 namespace CharacterEditorCore.Abilities
 {
     [BsonKnownTypes(typeof(Blizzard), typeof(Cleave), typeof(ColdBlood),
-        typeof(ConeOfCold), typeof(Rage), typeof(GhostlyStrike))]
+        typeof(ConeOfCold), typeof(Rage), typeof(GhostlyStrike), typeof(FireBreath), 
+        typeof(IronFists), typeof(IronShield), typeof(Unvisibility))]
     public class Ability
     {
         public string Name { get; set; }

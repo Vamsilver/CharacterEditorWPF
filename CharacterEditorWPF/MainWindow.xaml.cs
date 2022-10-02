@@ -96,7 +96,6 @@ namespace CharacterEditorWPF
 
         public void FillData(Character newCharacter)
         {
-
             tb_strength.Text = newCharacter.Strength.ToString();
             tb_dexterity.Text = newCharacter.Dexterity.ToString();
             tb_constitution.Text = newCharacter.Constitution.ToString();
@@ -321,7 +320,6 @@ namespace CharacterEditorWPF
 
         private void button_addCharacter_Click(object sender, RoutedEventArgs e)
         {
-            cb_createdCharacters.Items.Clear();
             try
             {
                 currentCharacter.Name = tb_name.Text;
@@ -367,9 +365,9 @@ namespace CharacterEditorWPF
             try
             {
                 var filter = new BsonDocument();
-                using var cursor = await collection.FindAsync(filter); 
+                using var cursor = collection.FindSync(filter); 
                 {
-                    while (await cursor.MoveNextAsync())
+                    while (cursor.MoveNext())
                     {
                         var docs = cursor.Current;
                         foreach (var doc in docs)
@@ -407,13 +405,16 @@ namespace CharacterEditorWPF
             {
                 Character unit = (Character)cb_createdCharacters.SelectedItem;
 
-                currentCharacter = unit;
+                if(unit is not null)
+                {
+                    currentCharacter = unit;
 
-                FillData(currentCharacter);
-                isCharacterSelected = true;
-                cb_chooseCharact.Text = currentCharacter.typeOfCharacter;
-                tb_name.Text = currentCharacter.Name;
-                isCharacterSelected = false;
+                    FillData(currentCharacter);
+                    isCharacterSelected = true;
+                    cb_chooseCharact.Text = currentCharacter.typeOfCharacter;
+                    tb_name.Text = currentCharacter.Name;
+                    isCharacterSelected = false;
+                }
             }
             catch { };
         }
