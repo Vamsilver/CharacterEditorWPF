@@ -15,10 +15,11 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using CharacterEditorCore.Item;
+using CharacterEditorCore.Items;
 using CharacterEditorCore.MongoDb;
 using MongoDB.Driver;
 using CharacterEditorCore.Abilities;
+using CharacterEditorCore.Items;
 
 namespace CharacterEditorWPF
 {
@@ -44,12 +45,10 @@ namespace CharacterEditorWPF
             BsonClassMap.RegisterClassMap<Rogue>();
             BsonClassMap.RegisterClassMap<Warrior>();
 
-            BsonClassMap.RegisterClassMap<Axe>();
-            BsonClassMap.RegisterClassMap<Bow>();
-            BsonClassMap.RegisterClassMap<Crossbow>();
-            BsonClassMap.RegisterClassMap<Knife>();
-            BsonClassMap.RegisterClassMap<Wand>();
-            BsonClassMap.RegisterClassMap<Hammer>();
+            BsonClassMap.RegisterClassMap<Item>();
+            BsonClassMap.RegisterClassMap<Helmet>();
+            BsonClassMap.RegisterClassMap<Chestplate>();
+            BsonClassMap.RegisterClassMap<Weapon>();
         }
 
         private void cb_chooseCharact_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -114,6 +113,16 @@ namespace CharacterEditorWPF
 
             tb_name.Text = newCharacter.Name;
 
+            foreach (var item in newCharacter.equipment)
+            {
+                tb_HP.Text = (Convert.ToDouble(tb_HP.Text) + item.HealthPoints).ToString();
+                tb_MP.Text = (Convert.ToDouble(tb_MP.Text) + item.ManaPoints).ToString();
+                tb_attack.Text = (Convert.ToDouble(tb_attack.Text) + item.Attack).ToString();
+                tb_magicAttack.Text = (Convert.ToDouble(tb_magicAttack.Text) + item.MagicAttack).ToString();
+                tb_physicalDef.Text = (Convert.ToDouble(tb_physicalDef.Text) + item.PhysicalDefense).ToString();
+            }
+
+            GetEquipmentToListBox();
             GetInventoryToListBox();
             GetPotentialAbilities();
             GetCharactersAbilities();
@@ -126,11 +135,12 @@ namespace CharacterEditorWPF
             cb_createdCharacters.SelectedIndex = -1;
             cb_createdCharacters.Items.Clear();
             cb_chooseCharact.SelectedIndex = -1;
-            cb_ChooseItem.SelectedIndex = -1;
+            cb_ChooseItem.SelectedItem = null;
             lb_inventory.Items.Clear();
+            lb_equipment.Items.Clear();
 
             tb_name.Text = "";
-
+             
             tb_strength.Text = "0";
             tb_dexterity.Text = "0";
             tb_constitution.Text = "0";
@@ -155,9 +165,9 @@ namespace CharacterEditorWPF
         {
             cb_PotentialAbilities.Items.Clear();
 
-            foreach(var ability in currentCharacter.potentialAbilities)
+            foreach (var ability in currentCharacter.potentialAbilities)
             {
-                cb_PotentialAbilities.Items.Add(ability);   
+                cb_PotentialAbilities.Items.Add(ability);
             }
         }
 
@@ -177,7 +187,7 @@ namespace CharacterEditorWPF
             {
                 return;
             }
-            if(currentCharacter.AvailablePoint == 0)
+            if (currentCharacter.AvailablePoint == 0)
             {
                 return;
             }
@@ -330,6 +340,7 @@ namespace CharacterEditorWPF
             {
                 MessageBox.Show("Enter the Name of character!");
             }
+
             try
             {
                 if (currentCharacter.Name == "")
@@ -353,7 +364,6 @@ namespace CharacterEditorWPF
             {
                 MessageBox.Show("You have to choose type of character!");
             }
-
         }
 
         private async void FillListBox()
@@ -367,7 +377,7 @@ namespace CharacterEditorWPF
             try
             {
                 var filter = new BsonDocument();
-                using var cursor = collection.FindSync(filter); 
+                using var cursor = collection.FindSync(filter);
                 {
                     while (cursor.MoveNext())
                     {
@@ -377,7 +387,7 @@ namespace CharacterEditorWPF
                             cb_createdCharacters.Items.Add(doc);
                         }
                     }
-                }     
+                }
             }
             catch { }
         }
@@ -393,7 +403,7 @@ namespace CharacterEditorWPF
 
         private void form_mainForm_Loaded(object sender, RoutedEventArgs e)
         {
-            FillListBox();  
+            FillListBox();
         }
 
         private void cb_createdCharacters_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -407,7 +417,7 @@ namespace CharacterEditorWPF
             {
                 Character unit = (Character)cb_createdCharacters.SelectedItem;
 
-                if(unit is not null)
+                if (unit is not null)
                 {
                     currentCharacter = unit;
 
@@ -448,34 +458,64 @@ namespace CharacterEditorWPF
 
             switch (selectedText)
             {
-                case "Wand":
-                    Wand wand = new Wand();
-                    currentCharacter.inventory.Add(wand);
+                case "Leather helmet (1)":
+                    currentCharacter.inventory.Add(new Helmet("Leather helmet (1)", 1, 10, 10, 10, 0, 0, 0, 0, 10, 0));
+                    MongoDb.ReplaceOneParametr(currentCharacter, "inventory", currentCharacter.inventory);
                     break;
 
-                case "Bow":
-                    Bow bow = new Bow();
-                    currentCharacter.inventory.Add(bow);
+                case "Iron helmet (2)":
+                    currentCharacter.inventory.Add(new Helmet("Iron helmet (2)", 2, 20, 20, 20, 0, 0, 40, 10, 40, 0));
+                    MongoDb.ReplaceOneParametr(currentCharacter, "inventory", currentCharacter.inventory);
                     break;
 
-                case "Crossbow":
-                    Crossbow crossbow = new Crossbow();
-                    currentCharacter.inventory.Add(crossbow);
+                case "Steel helmet (3)":
+                    currentCharacter.inventory.Add(new Helmet("Steel helmet (3)", 3, 30, 30, 30, 0, 0, 100, 20, 100, 0));
+                    MongoDb.ReplaceOneParametr(currentCharacter, "inventory", currentCharacter.inventory);
                     break;
 
-                case "Hammer":
-                    Hammer hammer = new Hammer();
-                    currentCharacter.inventory.Add(hammer);
+                case "Leather chestplate (1)":
+                    currentCharacter.inventory.Add(new Chestplate("Leather chestplate (1)", 1, 10, 10, 10, 0, 0, 0, 0, 10, 0));
+                    MongoDb.ReplaceOneParametr(currentCharacter, "inventory", currentCharacter.inventory);
                     break;
 
-                case "Knife":
-                    Knife knife = new Knife();
-                    currentCharacter.inventory.Add(knife);
+                case "Iron chestplate (2)":
+                    currentCharacter.inventory.Add(new Chestplate("Iron chestplate (2)", 2, 21, 19, 20, 0, 0, 80, 15, 70, 0));
+                    MongoDb.ReplaceOneParametr(currentCharacter, "inventory", currentCharacter.inventory);
                     break;
 
-                case "Axe":
-                    Axe axe = new Axe();
-                    currentCharacter.inventory.Add(axe);
+                case "Steel chestplate (3)":
+                    currentCharacter.inventory.Add(new Chestplate("Steel chestplate (3)", 3, 31, 29, 20, 0, 0, 110, 40, 100, 0));
+                    MongoDb.ReplaceOneParametr(currentCharacter, "inventory", currentCharacter.inventory);
+                    break;
+
+                case "Simple wand (1)":
+                    currentCharacter.inventory.Add(new Weapon("Simple Wand (1)", 1, 5, 7, 6, 10, 40, 0, 0, 0, 20));
+                    MongoDb.ReplaceOneParametr(currentCharacter, "inventory", currentCharacter.inventory);
+                    break;
+
+                case "Magical wand (2)":
+                    currentCharacter.inventory.Add(new Weapon("Wooden Wand (2)", 2, 10, 14, 12, 20, 90, 0, 0, 0, 60));
+                    MongoDb.ReplaceOneParametr(currentCharacter, "inventory", currentCharacter.inventory);
+                    break;
+
+                case "Runic wand (3)":
+                    currentCharacter.inventory.Add(new Weapon("Runic Wand (3)", 2, 15, 16, 16, 35, 170, 0, 0, 0, 100));
+                    MongoDb.ReplaceOneParametr(currentCharacter, "inventory", currentCharacter.inventory);
+                    break;
+
+                case "Dagger (1)":
+                    currentCharacter.inventory.Add(new Weapon("Dagger (1)", 1, 10, 10, 10, 0, 0, 0, 20, 0, 0));
+                    MongoDb.ReplaceOneParametr(currentCharacter, "inventory", currentCharacter.inventory);
+                    break;
+
+                case "Sword (2)":
+                    currentCharacter.inventory.Add(new Weapon("Sword (2)", 2, 20, 20, 20, 0, 0, 0, 40, 0, 0));
+                    MongoDb.ReplaceOneParametr(currentCharacter, "inventory", currentCharacter.inventory);
+                    break;
+
+                case "Halberd (3)":
+                    currentCharacter.inventory.Add(new Weapon("Halberd (3)", 3, 30, 30, 30, 0, 0, 0, 110, 0, 0));
+                    MongoDb.ReplaceOneParametr(currentCharacter, "inventory", currentCharacter.inventory);
                     break;
             }
 
@@ -488,7 +528,17 @@ namespace CharacterEditorWPF
 
             foreach (var item in currentCharacter.inventory)
             {
-                lb_inventory.Items.Add(item.Name);
+                lb_inventory.Items.Add(item);
+            }
+        }
+
+        private void GetEquipmentToListBox()
+        {
+            lb_equipment.Items.Clear();
+
+            foreach (var item in currentCharacter.equipment)
+            {
+                lb_equipment.Items.Add(item.GetTypeOfItem() + " - " + item);
             }
         }
 
@@ -512,20 +562,20 @@ namespace CharacterEditorWPF
 
         private void btn_AddSkills_Click(object sender, RoutedEventArgs e)
         {
-            try 
+            try
             {
-                if(currentCharacter is null)
+                if (currentCharacter is null)
                 {
                     return;
                 }
-                if(currentCharacter.abilitiesPoints == 0)
+                if (currentCharacter.abilitiesPoints == 0)
                 {
                     return;
                 }
 
                 Ability ability = (Ability)cb_PotentialAbilities.SelectedItem;
-                
-                if(ability is null)
+
+                if (ability is null)
                 {
                     return;
                 }
@@ -537,6 +587,68 @@ namespace CharacterEditorWPF
                 FillData(currentCharacter);
             }
             catch { }
+        }
+
+        private void lb_inventory_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (lb_inventory.SelectedItem is not null)
+            {
+                Item item = (Item)lb_inventory.SelectedItem;
+                try
+                {
+                    if (CheckCharacterStats(currentCharacter, item))
+                    {
+                        if (currentCharacter.equipment.Where<Item>(x => x.GetTypeOfItem() == item.GetTypeOfItem()).FirstOrDefault() is null)
+                        {
+                            currentCharacter.equipment.Add(item);
+                            MongoDb.ReplaceOneParametr(currentCharacter, "equipment", currentCharacter.equipment);
+
+                            lb_equipment.Items.Add(item.GetTypeOfItem() + " - " + item);
+
+                            currentCharacter.inventory.Remove(item);
+                            MongoDb.ReplaceOneParametr(currentCharacter, "inventory", currentCharacter.inventory);
+                        }
+                        else
+                            MessageBox.Show($"Equipment type {item.GetTypeOfItem()} already equipped");
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Required stats for {item}: \n {item.RequiredStrength} \n {item.RequiredDexterity}\n " +
+                            $"{item.RequiredConstitution} \n {item.RequiredIntelligence}");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+                FillData(currentCharacter);
+            }
+        }
+
+        private void lb_equipment_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (lb_equipment.SelectedItem is not null)
+            {
+                string temp = lb_equipment.SelectedItem.ToString().Split('-')[0].Trim();
+                var item = currentCharacter.equipment.Where<Item>(x => x.TypeOfItem == temp).FirstOrDefault();
+                if (item is not null)
+                {
+                    currentCharacter.equipment.Remove(item);
+                    MongoDb.ReplaceOneParametr(currentCharacter, "equipment", currentCharacter.equipment);
+
+                    currentCharacter.inventory.Add(item);
+                    MongoDb.ReplaceOneParametr(currentCharacter, "inventory", currentCharacter.inventory);
+
+                    lb_equipment.Items.Remove(item.GetTypeOfItem() + " - " + item);
+                }
+                FillData(currentCharacter);
+            }
+        }
+
+        private bool CheckCharacterStats(Character character, Item item)
+        {
+            return item.RequiredConstitution <= character.Constitution && item.RequiredDexterity <= character.Dexterity
+                && item.RequiredIntelligence <= character.Intelligence && item.RequiredStrength <= character.Strength;
         }
     }
 }

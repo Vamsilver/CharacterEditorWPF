@@ -1,4 +1,5 @@
-﻿using MongoDB.Bson;
+﻿using CharacterEditorCore.Items;
+using MongoDB.Bson;
 using MongoDB.Driver;
 using System;
 using System.Collections.Generic;
@@ -42,6 +43,15 @@ namespace CharacterEditorCore.MongoDb
             var client = new MongoClient("mongodb://localhost");
             var database = client.GetDatabase("Characters");
             return database.GetCollection<Character>("CharactersCollection");
+        }
+
+        public static void ReplaceOneParametr(Character character, string property, List<Item> items)
+        {
+            var client = new MongoClient("mongodb://localhost");
+            var database = client.GetDatabase("Characters");
+            var collection = database.GetCollection<Character>("CharactersCollection");
+            var updateDefenition = Builders<Character>.Update.Set(property, items);
+            collection.UpdateOne(x => x._id == character._id, updateDefenition);
         }
     }
 }

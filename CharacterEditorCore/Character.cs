@@ -2,8 +2,9 @@
 using System;
 using MongoDB.Bson;
 using MongoDB.Bson.Serialization.Attributes;
-using CharacterEditorCore.Item;
+using CharacterEditorCore.Items;
 using CharacterEditorCore.Abilities;
+using System.Collections.ObjectModel;
 
 namespace CharacterEditorCore
 {
@@ -16,9 +17,12 @@ namespace CharacterEditorCore
         public string typeOfCharacter;
 
         [BsonIgnoreIfDefault]
-        public List<IItem> inventory;
+        public List<Item> inventory;
 
-        private readonly int _inventoryCapacity = 3;
+        private readonly int _inventoryCapacity = 5;
+
+        [BsonIgnoreIfDefault]
+        public List<Item> equipment;
 
         protected int strength;
         protected int dexterity;
@@ -75,6 +79,15 @@ namespace CharacterEditorCore
             }
         }
 
+        //public void ChangePerformance(Item item)
+        //{
+        //    manaPoints += item.ManaPoints;
+        //    healthPoints += item.HealthPoints;
+        //    attack += item.Attack;
+        //    physicalDefense += item.PhysicalDefense;
+        //    magicAttack += item.MagicAttack;
+        //}
+
         //public void SubscribeForEvent()
         //{
         //    level.LevelUpEvent += LevelUp;
@@ -88,7 +101,8 @@ namespace CharacterEditorCore
             availablePoint = 10;
             abilitiesPoints = 0;
 
-            inventory = new List<IItem>(_inventoryCapacity);
+            inventory = new List<Item>(_inventoryCapacity);
+            equipment = new List<Item>();
         }
 
         public int GetInventoryMaxCapacity()

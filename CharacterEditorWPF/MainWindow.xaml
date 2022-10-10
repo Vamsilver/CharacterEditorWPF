@@ -39,29 +39,27 @@
         <TextBlock x:Name="tb_magicAttack" HorizontalAlignment="Left" Margin="443,358,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Height="42" Width="92" FontSize="16"/>
         <Label x:Name="label_physicalDef" Content="Physical deffence :" HorizontalAlignment="Left" Margin="295,418,0,0" VerticalAlignment="Top" Height="70" Width="143" FontSize="16"/>
         <TextBlock x:Name="tb_physicalDef" HorizontalAlignment="Left" Margin="443,423,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Height="42" Width="92" FontSize="16"/>
-        <Button x:Name="button_addCharacter" Content="Add" HorizontalAlignment="Left" Margin="72,492,0,0" VerticalAlignment="Top" Height="48" Width="96" Click="button_addCharacter_Click" RenderTransformOrigin="0.5,0.5" FontSize="16">
-            <Button.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Button.RenderTransform>
-        </Button>
+        <Button x:Name="button_addCharacter" Content="Add" HorizontalAlignment="Left" Margin="72,492,0,0" VerticalAlignment="Top" Height="48" Width="96" Click="button_addCharacter_Click" RenderTransformOrigin="0.5,0.5" FontSize="16"/>
         <Label x:Name="label_name" Content="Name:" HorizontalAlignment="Left" Margin="19,82,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.026,0.04" Height="44" Width="78" FontSize="16"/>
         <TextBox x:Name="tb_name" HorizontalAlignment="Left" Margin="79,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="234" LostFocus="tb_name_LostFocus" Height="30" FontFamily="Algerian" FontSize="16"/>
         <ComboBox x:Name="cb_createdCharacters" HorizontalAlignment="Left" Margin="538,22,0,0" VerticalAlignment="Top" Width="166" SelectionChanged="cb_createdCharacters_SelectionChanged" Height="28" FontSize="16"/>
         <Label x:Name="label_createdCharacters" Content="Created characters" HorizontalAlignment="Left" Margin="368,22,0,0" VerticalAlignment="Top" Height="33" Width="150" FontSize="16"/>
         <Button x:Name="btn_clear" Content="Clear all fields" HorizontalAlignment="Left" Margin="393,492,0,0" VerticalAlignment="Top" Height="48" Width="96" Click="btn_clear_Click" FontSize="16"/>
-        <ListBox x:Name="lb_inventory" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="606,398,102,443" FontSize="16" Visibility="Visible"/>
-        <ComboBox x:Name="cb_ChooseItem" HorizontalAlignment="Left" Margin="538,88,0,0" VerticalAlignment="Top" Width="166" Height="28" FontSize="16">
-            <ComboBoxItem Content="Axe"/>
-            <ComboBoxItem Content="Wand"/>
-            <ComboBoxItem Content="Hammer"/>
-            <ComboBoxItem Content="Knife"/>
-            <ComboBoxItem Content="Crossbow"/>
-            <ComboBoxItem Content="Bow"/>
+        <ListBox x:Name="lb_inventory" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="541,427,260,414" FontSize="16" Visibility="Visible" SelectionChanged="lb_inventory_SelectionChanged"/>
+        <ListBox x:Name="lb_equipment" Margin="764,427,38,414" FontSize="16" Visibility="Visible" SelectionChanged="lb_equipment_SelectionChanged"/>
+        <ComboBox x:Name="cb_ChooseItem" HorizontalAlignment="Left" Margin="538,88,0,0" VerticalAlignment="Top" Width="166" Height="28" FontSize="16" >
+            <ComboBoxItem Content="Leather helmet (1)"/>
+            <ComboBoxItem Content="Iron helmet (2)"/>
+            <ComboBoxItem Content="Steel helmet (3)"/>
+            <ComboBoxItem Content="Leather chestplate (1)"/>
+            <ComboBoxItem Content="Iron chestplate (2)"/>
+            <ComboBoxItem Content="Steel chestplate (3)"/>
+            <ComboBoxItem Content="Simple wand (1)"/>
+            <ComboBoxItem Content="Magical wand (2)"/>
+            <ComboBoxItem Content="Runic wand (3)"/>
+            <ComboBoxItem Content="Dagger (1)"/>
+            <ComboBoxItem Content="Sword (2)"/>
+            <ComboBoxItem Content="Halberd (3)"/>
         </ComboBox>
         <Label x:Name="lb_addItemToInventory" Content="Add item to inventory" HorizontalAlignment="Left" Margin="368,82,0,0" VerticalAlignment="Top" FontSize="16"/>
         <Button x:Name="btn_AddItem" Content="Add item" HorizontalAlignment="Left" Margin="714,88,0,0" VerticalAlignment="Top" Click="btn_AddItem_Click" Height="25" Width="76" FontSize="16"/>
@@ -81,5 +79,7 @@
         <Button x:Name="btn_AddSkills" Content="Add" HorizontalAlignment="Left" Margin="714,350,0,0" VerticalAlignment="Top" Height="25" Width="76" FontSize="16" Click="btn_AddSkills_Click"/>
         <ComboBox x:Name="cb_CharactersAbilities" HorizontalAlignment="Left" Margin="810,348,0,0" VerticalAlignment="Top" Width="166" Height="28" FontSize="16"/>
         <Label Content="Characters skills:" HorizontalAlignment="Left" Margin="830,311,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <Label Content="Inventory" HorizontalAlignment="Left" Margin="581,389,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <Label Content="Equipment" HorizontalAlignment="Left" Margin="825,389,0,0" VerticalAlignment="Top" FontSize="16"/>
     </Grid>
 </Window>
