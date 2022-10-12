@@ -40,11 +40,12 @@
         <Label x:Name="label_physicalDef" Content="Physical deffence :" HorizontalAlignment="Left" Margin="295,418,0,0" VerticalAlignment="Top" Height="70" Width="143" FontSize="16"/>
         <TextBlock x:Name="tb_physicalDef" HorizontalAlignment="Left" Margin="443,423,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Height="42" Width="92" FontSize="16"/>
         <Button x:Name="button_addCharacter" Content="Add" HorizontalAlignment="Left" Margin="72,492,0,0" VerticalAlignment="Top" Height="48" Width="96" Click="button_addCharacter_Click" RenderTransformOrigin="0.5,0.5" FontSize="16"/>
+        <Button x:Name="button_CreateMatch" Content="Create match" HorizontalAlignment="Left" Margin="845,22,0,0" VerticalAlignment="Top" Height="48" Width="110" Click="button_CreateMatch_Click" RenderTransformOrigin="0.5,0.5" FontSize="16"/>
         <Label x:Name="label_name" Content="Name:" HorizontalAlignment="Left" Margin="19,82,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.026,0.04" Height="44" Width="78" FontSize="16"/>
         <TextBox x:Name="tb_name" HorizontalAlignment="Left" Margin="79,82,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="234" LostFocus="tb_name_LostFocus" Height="30" FontFamily="Algerian" FontSize="16"/>
         <ComboBox x:Name="cb_createdCharacters" HorizontalAlignment="Left" Margin="538,22,0,0" VerticalAlignment="Top" Width="166" SelectionChanged="cb_createdCharacters_SelectionChanged" Height="28" FontSize="16"/>
         <Label x:Name="label_createdCharacters" Content="Created characters" HorizontalAlignment="Left" Margin="368,22,0,0" VerticalAlignment="Top" Height="33" Width="150" FontSize="16"/>
-        <Button x:Name="btn_clear" Content="Clear all fields" HorizontalAlignment="Left" Margin="393,492,0,0" VerticalAlignment="Top" Height="48" Width="96" Click="btn_clear_Click" FontSize="16"/>
+        <Button x:Name="btn_clear" Content="Clear all fields" HorizontalAlignment="Left" Margin="368,492,0,0" VerticalAlignment="Top" Height="48" Width="96" Click="btn_clear_Click" FontSize="16"/>
         <ListBox x:Name="lb_inventory" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="541,427,260,414" FontSize="16" Visibility="Visible" SelectionChanged="lb_inventory_SelectionChanged"/>
         <ListBox x:Name="lb_equipment" Margin="764,427,38,414" FontSize="16" Visibility="Visible" SelectionChanged="lb_equipment_SelectionChanged"/>
         <ComboBox x:Name="cb_ChooseItem" HorizontalAlignment="Left" Margin="538,88,0,0" VerticalAlignment="Top" Width="166" Height="28" FontSize="16" >

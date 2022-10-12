@@ -63,7 +63,7 @@ namespace CharacterEditorCore
 
         public override string ToString()
         {
-            return $"{Name} | {_id}";
+            return $"{Name} | {level.CurrentLevel}";
         }
 
         private void LevelUp()

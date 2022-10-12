@@ -366,7 +366,7 @@ namespace CharacterEditorWPF
             }
         }
 
-        private async void FillListBox()
+        private void FillListBox()
         {
             if (cb_createdCharacters.Items.Count != 0)
             {
@@ -470,7 +470,6 @@ namespace CharacterEditorWPF
 
                 case "Steel helmet (3)":
                     currentCharacter.inventory.Add(new Helmet("Steel helmet (3)", 3, 30, 30, 30, 0, 0, 100, 20, 100, 0));
-                    MongoDb.ReplaceOneParametr(currentCharacter, "inventory", currentCharacter.inventory);
                     break;
 
                 case "Leather chestplate (1)":
@@ -480,44 +479,38 @@ namespace CharacterEditorWPF
 
                 case "Iron chestplate (2)":
                     currentCharacter.inventory.Add(new Chestplate("Iron chestplate (2)", 2, 21, 19, 20, 0, 0, 80, 15, 70, 0));
-                    MongoDb.ReplaceOneParametr(currentCharacter, "inventory", currentCharacter.inventory);
                     break;
 
                 case "Steel chestplate (3)":
                     currentCharacter.inventory.Add(new Chestplate("Steel chestplate (3)", 3, 31, 29, 20, 0, 0, 110, 40, 100, 0));
-                    MongoDb.ReplaceOneParametr(currentCharacter, "inventory", currentCharacter.inventory);
                     break;
 
                 case "Simple wand (1)":
                     currentCharacter.inventory.Add(new Weapon("Simple Wand (1)", 1, 5, 7, 6, 10, 40, 0, 0, 0, 20));
-                    MongoDb.ReplaceOneParametr(currentCharacter, "inventory", currentCharacter.inventory);
                     break;
 
                 case "Magical wand (2)":
                     currentCharacter.inventory.Add(new Weapon("Wooden Wand (2)", 2, 10, 14, 12, 20, 90, 0, 0, 0, 60));
-                    MongoDb.ReplaceOneParametr(currentCharacter, "inventory", currentCharacter.inventory);
                     break;
 
                 case "Runic wand (3)":
                     currentCharacter.inventory.Add(new Weapon("Runic Wand (3)", 2, 15, 16, 16, 35, 170, 0, 0, 0, 100));
-                    MongoDb.ReplaceOneParametr(currentCharacter, "inventory", currentCharacter.inventory);
                     break;
 
                 case "Dagger (1)":
                     currentCharacter.inventory.Add(new Weapon("Dagger (1)", 1, 10, 10, 10, 0, 0, 0, 20, 0, 0));
-                    MongoDb.ReplaceOneParametr(currentCharacter, "inventory", currentCharacter.inventory);
                     break;
 
                 case "Sword (2)":
                     currentCharacter.inventory.Add(new Weapon("Sword (2)", 2, 20, 20, 20, 0, 0, 0, 40, 0, 0));
-                    MongoDb.ReplaceOneParametr(currentCharacter, "inventory", currentCharacter.inventory);
                     break;
 
                 case "Halberd (3)":
                     currentCharacter.inventory.Add(new Weapon("Halberd (3)", 3, 30, 30, 30, 0, 0, 0, 110, 0, 0));
-                    MongoDb.ReplaceOneParametr(currentCharacter, "inventory", currentCharacter.inventory);
                     break;
             }
+
+            MongoDb.ReplaceOneParametr(currentCharacter, "inventory", currentCharacter.inventory);
 
             GetInventoryToListBox();
         }
@@ -649,6 +642,13 @@ namespace CharacterEditorWPF
         {
             return item.RequiredConstitution <= character.Constitution && item.RequiredDexterity <= character.Dexterity
                 && item.RequiredIntelligence <= character.Intelligence && item.RequiredStrength <= character.Strength;
+        }
+
+        private void button_CreateMatch_Click(object sender, RoutedEventArgs e)
+        {
+            MatchWindow match = new MatchWindow();
+            match.Owner = this;
+            match.Show();
         }
     }
 }
