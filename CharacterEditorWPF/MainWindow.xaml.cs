@@ -460,12 +460,10 @@ namespace CharacterEditorWPF
             {
                 case "Leather helmet (1)":
                     currentCharacter.inventory.Add(new Helmet("Leather helmet (1)", 1, 10, 10, 10, 0, 0, 0, 0, 10, 0));
-                    MongoDb.ReplaceOneParametr(currentCharacter, "inventory", currentCharacter.inventory);
                     break;
 
                 case "Iron helmet (2)":
                     currentCharacter.inventory.Add(new Helmet("Iron helmet (2)", 2, 20, 20, 20, 0, 0, 40, 10, 40, 0));
-                    MongoDb.ReplaceOneParametr(currentCharacter, "inventory", currentCharacter.inventory);
                     break;
 
                 case "Steel helmet (3)":
@@ -474,7 +472,6 @@ namespace CharacterEditorWPF
 
                 case "Leather chestplate (1)":
                     currentCharacter.inventory.Add(new Chestplate("Leather chestplate (1)", 1, 10, 10, 10, 0, 0, 0, 0, 10, 0));
-                    MongoDb.ReplaceOneParametr(currentCharacter, "inventory", currentCharacter.inventory);
                     break;
 
                 case "Iron chestplate (2)":
@@ -486,15 +483,15 @@ namespace CharacterEditorWPF
                     break;
 
                 case "Simple wand (1)":
-                    currentCharacter.inventory.Add(new Weapon("Simple Wand (1)", 1, 5, 7, 6, 10, 40, 0, 0, 0, 20));
+                    currentCharacter.inventory.Add(new Weapon("Simple wand (1)", 1, 5, 7, 6, 10, 40, 0, 0, 0, 20));
                     break;
 
                 case "Magical wand (2)":
-                    currentCharacter.inventory.Add(new Weapon("Wooden Wand (2)", 2, 10, 14, 12, 20, 90, 0, 0, 0, 60));
+                    currentCharacter.inventory.Add(new Weapon("Magical wand (2)", 2, 10, 14, 12, 20, 90, 0, 0, 0, 60));
                     break;
 
                 case "Runic wand (3)":
-                    currentCharacter.inventory.Add(new Weapon("Runic Wand (3)", 2, 15, 16, 16, 35, 170, 0, 0, 0, 100));
+                    currentCharacter.inventory.Add(new Weapon("Runic wand (3)", 2, 15, 16, 16, 35, 170, 0, 0, 0, 100));
                     break;
 
                 case "Dagger (1)":
@@ -606,8 +603,8 @@ namespace CharacterEditorWPF
                     }
                     else
                     {
-                        MessageBox.Show($"Required stats for {item}: \n {item.RequiredStrength} \n {item.RequiredDexterity}\n " +
-                            $"{item.RequiredConstitution} \n {item.RequiredIntelligence}");
+                        MessageBox.Show($"Required stats for {item}: \n Strength: {item.RequiredStrength} \n Dexterity: {item.RequiredDexterity}\n" +
+                            $" Constitution: {item.RequiredConstitution} \n Intelligence: {item.RequiredIntelligence}");
                     }
                 }
                 catch (Exception ex)
