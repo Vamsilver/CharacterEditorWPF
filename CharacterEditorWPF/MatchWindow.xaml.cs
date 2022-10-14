@@ -229,7 +229,13 @@ namespace CharacterEditorWPF
                 match.date = DateTime.Now;
                 MongoDb.AddMatchToDataBase(match);
                 ClearCharFromTeams();
-                FillData();
+
+                lb_allCharacters.Items.Clear();
+
+                foreach (var character in characters)
+                {
+                    lb_allCharacters.Items.Add(character);
+                }
             }
             else
             {

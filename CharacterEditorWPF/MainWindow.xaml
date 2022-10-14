@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CharacterEditorWPF"
         mc:Ignorable="d"
-        Title="Characters Editor Vasilev" Height="597" Width="1000">
+        Title="Characters Editor Vasilev" Height="610" Width="1000" ResizeMode="NoResize">
     <Grid x:Name="form_mainForm" Loaded="form_mainForm_Loaded">
         <ComboBox x:Name="cb_chooseCharact" HorizontalAlignment="Left" Margin="191,28,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cb_chooseCharact_SelectionChanged" FontSize="16" >
             <ComboBoxItem Content="Warrior"/>
