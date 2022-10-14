@@ -5,9 +5,9 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CharacterEditorWPF"
         mc:Ignorable="d"
-        Title="Match editor" Height="649" Width="960">
+        Title="Match editor" Height="649" Width="960" ResizeMode="NoResize">
     <Grid  x:Name="form_matchForm">
-        <ListBox x:Name="lb_allCharacters" d:ItemsSource="{d:SampleData ItemCount=20}" Width="150" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,50,0,0" PreviewMouseLeftButtonDown="lb_allCharacters_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="lb_allCharacters_PreviewMouseRightButtonDown"/>
+        <ListBox x:Name="lb_allCharacters" d:ItemsSource="{d:SampleData ItemCount=20}" Width="195" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,50,0,0" PreviewMouseLeftButtonDown="lb_allCharacters_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="lb_allCharacters_PreviewMouseRightButtonDown" Height="573"/>
         <ListBox x:Name="lb_firstTeam" d:ItemsSource="{d:SampleData ItemCount=6}"  Width="150" Height="180" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="325,70,0,0" PreviewKeyDown="lb_firstTeam_PreviewKeyDown"/>
         <ListBox x:Name="lb_secondTeam" d:ItemsSource="{d:SampleData ItemCount=6}" Width="150" Height="180" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="490,70,0,0" PreviewKeyDown="lb_secondTeam_PreviewKeyDown"/>
         <Button x:Name="btn_StartMatch" Content="Start match" FontSize="16" Height="50" Width="110" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,267,0,0" Click="btn_StartMatch_Click" />
