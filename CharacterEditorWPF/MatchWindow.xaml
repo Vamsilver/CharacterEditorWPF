@@ -8,13 +8,18 @@
         Title="Match editor" Height="649" Width="960">
     <Grid  x:Name="form_matchForm">
         <ListBox x:Name="lb_allCharacters" d:ItemsSource="{d:SampleData ItemCount=20}" Width="150" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="10,50,0,0" PreviewMouseLeftButtonDown="lb_allCharacters_PreviewMouseLeftButtonDown" PreviewMouseRightButtonDown="lb_allCharacters_PreviewMouseRightButtonDown"/>
-        <ListBox x:Name="lb_firstTeam" d:ItemsSource="{d:SampleData ItemCount=6}"  Width="150" Height="180" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="325,70,0,0"/>
-        <ListBox x:Name="lb_secondTeam" d:ItemsSource="{d:SampleData ItemCount=6}" Width="150" Height="180" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="490,70,0,0"/>
-        <Button x:Name="btn_StartMatch" Content="Start match" FontSize="16" Height="50" Width="110" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,267,0,0" />
-        <Button x:Name="btn_AutoFill" Content="Auto fill teams" Width="120" Height="40"  FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,15,35,0" />
+        <ListBox x:Name="lb_firstTeam" d:ItemsSource="{d:SampleData ItemCount=6}"  Width="150" Height="180" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="325,70,0,0" PreviewKeyDown="lb_firstTeam_PreviewKeyDown"/>
+        <ListBox x:Name="lb_secondTeam" d:ItemsSource="{d:SampleData ItemCount=6}" Width="150" Height="180" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="490,70,0,0" PreviewKeyDown="lb_secondTeam_PreviewKeyDown"/>
+        <Button x:Name="btn_StartMatch" Content="Start match" FontSize="16" Height="50" Width="110" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,267,0,0" Click="btn_StartMatch_Click" />
+        <Button x:Name="btn_AutoFill" Content="Auto fill teams" Width="120" Height="40"  FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Right" Margin="0,15,35,0" Click="btn_AutoFill_Click" />
         <Label Content="Characters"  Width="100" Height="30" HorizontalContentAlignment="Center" FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="35,15,0,0"/>
         <Label Content="First team" Width="100" Height="30"  FontSize="16" HorizontalContentAlignment="Center" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="350,35,0,0"/>
         <Label Content="Second team" Width="110" Height="30" FontSize="16" HorizontalContentAlignment="Center" VerticalAlignment="Top" HorizontalAlignment="Left" Margin="510,35,0,0"/>
         <Label Content="Match" Width="100" Height="30" FontSize="18" HorizontalContentAlignment="Center" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,5,0,0"/>
+        <TextBlock x:Name="txt_FirstTeamAverLvl" TextWrapping="Wrap" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="249,100,0,0" Width="51" FontSize="16"/>
+        <Label Content="Average lvl:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="229,69,0,0" FontSize="16"/>
+        <TextBlock x:Name="txt_SecondTeamAverLvl" TextWrapping="Wrap" HorizontalAlignment="Right" VerticalAlignment="Top" TextAlignment="Right" Margin="0,100,244,0" Width="51" FontSize="16"/>
+        <Label Content="Average lvl:" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="645,69,0,0" FontSize="16"/>
+        <Button x:Name="btn_ShowMatchesHistory" Content="Show matches history" Width="172" Height="40"  FontSize="16" VerticalAlignment="Top" HorizontalAlignment="Center" Margin="0,361,0,0" Click="btn_ShowMatchesHistory_Click" />
     </Grid>
 </Window>

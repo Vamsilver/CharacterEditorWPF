@@ -38,11 +38,18 @@ namespace CharacterEditorCore.MongoDb
         }
 
 
-        public static IMongoCollection<Character> GetCollection()
+        public static IMongoCollection<Character> GetCharactersCollection()
         {
             var client = new MongoClient("mongodb://localhost");
             var database = client.GetDatabase("Characters");
             return database.GetCollection<Character>("CharactersCollection");
+        }
+
+        public static IMongoCollection<Match> GetMatchesCollection()
+        {
+            var client = new MongoClient("mongodb://localhost");
+            var database = client.GetDatabase("Characters");
+            return database.GetCollection<Match>("Matches");
         }
 
         public static void ReplaceOneParametr(Character character, string property, List<Item> items)
@@ -52,6 +59,14 @@ namespace CharacterEditorCore.MongoDb
             var collection = database.GetCollection<Character>("CharactersCollection");
             var updateDefenition = Builders<Character>.Update.Set(property, items);
             collection.UpdateOne(x => x._id == character._id, updateDefenition);
+        }
+
+        public static void AddMatchToDataBase(Match match)
+        {
+            var client = new MongoClient("mongodb://localhost");
+            var database = client.GetDatabase("Characters");
+            var collection = database.GetCollection<Match>("Matches");
+            collection.InsertOne(match);
         }
     }
 }

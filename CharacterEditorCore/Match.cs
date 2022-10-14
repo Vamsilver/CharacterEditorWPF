@@ -13,7 +13,7 @@ namespace CharacterEditorCore
     {
         public ObjectId _id;
 
-        public readonly int teamSize = 6;
+        public DateTime date;
 
         [BsonIgnoreIfDefault]
         public List<ObjectId> firstTeam;
@@ -24,8 +24,13 @@ namespace CharacterEditorCore
 
         public Match()
         {
-            firstTeam = new List<ObjectId>(teamSize);
-            secondTeam = new List<ObjectId>(teamSize);
+            firstTeam = new List<ObjectId>();
+            secondTeam = new List<ObjectId>();
+        }
+
+        public override string ToString()
+        {
+            return $"Macth {date} | {_id}";
         }
     }
 }

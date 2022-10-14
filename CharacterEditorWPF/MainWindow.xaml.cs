@@ -373,7 +373,7 @@ namespace CharacterEditorWPF
                 cb_createdCharacters.Items.Clear();
             }
 
-            var collection = MongoDb.GetCollection();
+            var collection = MongoDb.GetCharactersCollection();
             try
             {
                 var filter = new BsonDocument();

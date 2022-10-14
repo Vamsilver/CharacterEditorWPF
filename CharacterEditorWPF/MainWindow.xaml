@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CharacterEditorWPF"
         mc:Ignorable="d"
-        Title="Characters Editor Vasilev" Height="1000" Width="1000">
+        Title="Characters Editor Vasilev" Height="597" Width="1000">
     <Grid x:Name="form_mainForm" Loaded="form_mainForm_Loaded">
         <ComboBox x:Name="cb_chooseCharact" HorizontalAlignment="Left" Margin="191,28,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="cb_chooseCharact_SelectionChanged" FontSize="16" >
             <ComboBoxItem Content="Warrior"/>
@@ -46,8 +46,8 @@
         <ComboBox x:Name="cb_createdCharacters" HorizontalAlignment="Left" Margin="538,22,0,0" VerticalAlignment="Top" Width="166" SelectionChanged="cb_createdCharacters_SelectionChanged" Height="28" FontSize="16"/>
         <Label x:Name="label_createdCharacters" Content="Created characters" HorizontalAlignment="Left" Margin="368,22,0,0" VerticalAlignment="Top" Height="33" Width="150" FontSize="16"/>
         <Button x:Name="btn_clear" Content="Clear all fields" HorizontalAlignment="Left" Margin="368,492,0,0" VerticalAlignment="Top" Height="48" Width="96" Click="btn_clear_Click" FontSize="16"/>
-        <ListBox x:Name="lb_inventory" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="541,427,260,414" FontSize="16" Visibility="Visible" SelectionChanged="lb_inventory_SelectionChanged"/>
-        <ListBox x:Name="lb_equipment" Margin="764,427,38,414" FontSize="16" Visibility="Visible" SelectionChanged="lb_equipment_SelectionChanged"/>
+        <ListBox x:Name="lb_inventory" d:ItemsSource="{d:SampleData ItemCount=5}"  FontSize="16" Visibility="Visible" SelectionChanged="lb_inventory_SelectionChanged" Margin="528,425,0,0" Width="188" RenderTransformOrigin="0.541,0.507" Height="131" VerticalAlignment="Top" HorizontalAlignment="Left"/>
+        <ListBox x:Name="lb_equipment" d:ItemsSource="{d:SampleData ItemCount=5}"  FontSize="16" Visibility="Visible" SelectionChanged="lb_equipment_SelectionChanged" Margin="763,425,0,0" Width="210" Height="133" VerticalAlignment="Top" HorizontalAlignment="Left"/>
         <ComboBox x:Name="cb_ChooseItem" HorizontalAlignment="Left" Margin="538,88,0,0" VerticalAlignment="Top" Width="166" Height="28" FontSize="16" >
             <ComboBoxItem Content="Leather helmet (1)"/>
             <ComboBoxItem Content="Iron helmet (2)"/>
