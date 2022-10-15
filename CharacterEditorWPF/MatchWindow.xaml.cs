@@ -111,11 +111,16 @@ namespace CharacterEditorWPF
 
         public void AddCharacterToTeam(List<ObjectId> team)
         {
-            Character character = (Character)lb_allCharacters.SelectedItem;
-            team.Add(character._id);
-            lb_allCharacters.Items.Remove(character);
+            if (team.Count < 6)
+            {
+                Character character = (Character)lb_allCharacters.SelectedItem;
+                team.Add(character._id);
+                lb_allCharacters.Items.Remove(character);
 
-            FillData();
+                FillData();
+            }
+            else
+                MessageBox.Show("No");
         }
 
         public void DeleteCharacterFromTeam(List<ObjectId> team, ListBox box)
