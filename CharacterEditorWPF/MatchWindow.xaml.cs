@@ -236,6 +236,8 @@ namespace CharacterEditorWPF
                 ClearCharFromTeams();
 
                 lb_allCharacters.Items.Clear();
+                lb_firstTeam.Items.Clear();
+                lb_secondTeam.Items.Clear();
 
                 foreach (var character in characters)
                 {

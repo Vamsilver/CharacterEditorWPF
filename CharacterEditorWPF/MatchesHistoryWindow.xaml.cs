@@ -101,7 +101,10 @@ namespace CharacterEditorWPF
         {
             Character character = (Character)lb_firstTeam.SelectedItem;
             if (character is not null)
+            {
                 FillCharacterData(character);
+                lb_secondTeam.SelectedItem = null;
+            }
         }
 
         private void FillCharacterData(Character character)
@@ -143,9 +146,12 @@ namespace CharacterEditorWPF
 
         private void lb_secondTeam_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            Character character = (Character)lb_firstTeam.SelectedItem;
+            Character character = (Character)lb_secondTeam.SelectedItem;
             if (character is not null)
+            {
                 FillCharacterData(character);
+                lb_firstTeam.SelectedItem = null;
+            }
         }
     }
 }
